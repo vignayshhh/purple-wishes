@@ -10,20 +10,43 @@ export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    const audio = new Audio("https://assets.pixabay.com/download/audio/2022/03/10/audiotrim_46244_ypYLvKJ.mp3");
-    audio.loop = true;
-    audio.volume = 0.3;
-    audioRef.current = audio;
+    // Try multiple fallback audio sources
+    const audioSources = [
+      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "https://media-files.vidyard.com/videos/f1e7b91e-0ef9-4f7c-b95b-2f4f17e5c7a4/preview/media_1669308340.mp3"
+    ];
     
-    audio.play().then(() => {
-      setIsPlaying(true);
-    }).catch(() => {
-      console.log("Audio autoplay prevented by browser");
-      setIsPlaying(false);
-    });
+    let currentIndex = 0;
+    
+    const tryLoadAudio = () => {
+      if (currentIndex >= audioSources.length) {
+        setIsPlaying(false);
+        return;
+      }
+
+      const audio = new Audio();
+      audio.loop = true;
+      audio.volume = 0.3;
+      audio.crossOrigin = "anonymous";
+      
+      audio.addEventListener('canplay', () => {
+        audioRef.current = audio;
+      });
+      
+      audio.addEventListener('error', () => {
+        currentIndex++;
+        tryLoadAudio();
+      });
+      
+      audio.src = audioSources[currentIndex];
+    };
+
+    tryLoadAudio();
 
     return () => {
-      audio.pause();
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
     };
   }, []);
 
