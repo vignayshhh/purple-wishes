@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import giftBoxImg from "@assets/stock_images/3d_purple_gift_box_c_20df1fd4.jpg";
+import giftBoxImg from "@assets/22.55_1766068110878.jpg";
 import earplugsImg from "@assets/stock_images/purple_earplugs_loop_6018d47c.jpg";
 import confetti from "canvas-confetti";
 

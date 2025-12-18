@@ -11,10 +11,13 @@ export default function MemoryLane() {
   return (
     <section id="memory-section" className="py-20 px-4 bg-gradient-to-t from-background to-purple-950/30">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-5xl md:text-6xl lg:text-7xl font-script text-white mb-20 drop-shadow-lg">
+        <h2 className="text-5xl md:text-6xl lg:text-7xl font-script text-white mb-6 drop-shadow-lg">
           How it all Started
           <div className="w-24 h-1 bg-purple-500 mx-auto mt-6 rounded-full shadow-[0_0_10px_#a855f7]"></div>
         </h2>
+        <p className="text-lg md:text-xl text-purple-200 font-sans mt-8 mb-16">
+          I had these images saved for this special birthday!
+        </p>
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto items-center">
           {/* Center Infinity Symbol */}

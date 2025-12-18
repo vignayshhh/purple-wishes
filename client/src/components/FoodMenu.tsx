@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import rasamalaiImg from "@assets/stock_images/rasamalai_indian_swe_27adcf5c.jpg";
-import dosaImg from "@assets/stock_images/dosa_with_chutney_in_0396e90e.jpg";
+import rasamalaiImg from "@assets/stock_images/rasamalai_indian_swe_472ddac7.jpg";
+import dosaImg from "@assets/stock_images/dosa_crispy_with_whi_d30072f2.jpg";
 import paneerImg from "@assets/stock_images/paneer_butter_masala_059266f6.jpg";
-import paniPuriImg from "@assets/stock_images/pani_puri_masala_pur_3d1bec23.jpg";
-import kothuImg from "@assets/stock_images/kothu_parotta_indian_37e94b6f.jpg";
+import paniPuriImg from "@assets/stock_images/masala_puri_indian_s_c4f71c16.jpg";
+import kothuImg from "@assets/stock_images/kothu_parotta_indian_6d816659.jpg";
 
 const foodItems = [
   {
