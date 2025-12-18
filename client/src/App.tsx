@@ -9,25 +9,18 @@ import NotFound from "@/pages/not-found";
 function Router() {
   return (
     <Switch>
-      <Route path="/countdown" component={Countdown} />
-      <Route path="/" component={Home} />
+      <Route path="/" component={Countdown} />
+      <Route path="/home" component={Home} />
       <Route component={NotFound} />
     </Switch>
   );
 }
 
 function App() {
-  // Check if we should show countdown (only on first load)
-  const shouldShowCountdown = !sessionStorage.getItem("countdownShown");
-  
-  if (shouldShowCountdown) {
-    sessionStorage.setItem("countdownShown", "true");
-  }
-
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster />
-      {shouldShowCountdown ? <Countdown /> : <Router />}
+      <Router />
     </QueryClientProvider>
   );
 }

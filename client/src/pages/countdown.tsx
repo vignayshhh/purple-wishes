@@ -9,7 +9,7 @@ export default function Countdown() {
 
   useEffect(() => {
     if (timeLeft <= 0) {
-      setLocation("/");
+      setLocation("/home");
       return;
     }
 
@@ -17,7 +17,7 @@ export default function Countdown() {
       setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(interval);
-          setLocation("/");
+          setLocation("/home");
           return 0;
         }
         return prev - 1;
@@ -184,7 +184,7 @@ export default function Countdown() {
 
         {/* Skip Button */}
         <motion.button
-          onClick={() => setLocation("/")}
+          onClick={() => setLocation("/home")}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
