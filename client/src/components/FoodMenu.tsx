@@ -36,39 +36,39 @@ const foodItems = [
 export default function FoodMenu() {
   return (
     <section className="py-20 px-4 bg-background">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl text-center text-white mb-16 drop-shadow-lg">
-          Birthday Special Food Items Unakkuuu 🍽️
-          <div className="w-24 h-1 bg-purple-500 mx-auto mt-4 rounded-full shadow-[0_0_10px_#a855f7]"></div>
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-5xl md:text-6xl lg:text-7xl font-script text-center text-white mb-16 drop-shadow-lg">
+          Sakthi's Favourites for her Special Day
+          <div className="w-24 h-1 bg-purple-500 mx-auto mt-6 rounded-full shadow-[0_0_10px_#a855f7]"></div>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="space-y-16">
           {foodItems.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="group bg-card/50 backdrop-blur-sm border border-white/5 rounded-3xl overflow-hidden hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] transition-all duration-300"
+              className="flex flex-col items-center"
             >
-              <div className="h-64 overflow-hidden relative">
+              <h3 className="text-4xl md:text-5xl font-script text-purple-300 mb-6 drop-shadow-lg">
+                {item.title}
+              </h3>
+              
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="w-full max-w-md h-72 overflow-hidden rounded-3xl shadow-2xl border-2 border-purple-500/30 mb-6"
+              >
                 <img 
                   src={item.img} 
                   alt={item.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
-              </div>
+              </motion.div>
               
-              <div className="p-6 text-center">
-                <h3 className="text-2xl font-handwriting text-primary-foreground mb-2 group-hover:text-purple-300 transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-purple-200/80 font-sans">
-                  {item.desc}
-                </p>
-              </div>
+              <p className="text-lg md:text-xl text-purple-200 font-sans text-center max-w-md">
+                {item.desc}
+              </p>
             </motion.div>
           ))}
         </div>

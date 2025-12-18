@@ -22,9 +22,9 @@ export default function GiftSection() {
   return (
     <section id="gift-section" className="py-20 px-4 bg-gradient-to-b from-background to-purple-950/50">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl text-white mb-12 drop-shadow-lg">
+        <h2 className="text-5xl md:text-6xl lg:text-7xl font-script text-white mb-12 drop-shadow-lg">
           Summa Virtual Gift
-          <div className="w-24 h-1 bg-purple-500 mx-auto mt-4 rounded-full shadow-[0_0_10px_#a855f7]"></div>
+          <div className="w-24 h-1 bg-purple-500 mx-auto mt-6 rounded-full shadow-[0_0_10px_#a855f7]"></div>
         </h2>
 
         <div className="relative min-h-[500px] flex flex-col items-center justify-center">
