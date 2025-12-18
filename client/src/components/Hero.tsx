@@ -1,40 +1,47 @@
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
-import { useEffect } from "react";
+import { useState } from "react";
 import heroBg from "@assets/stock_images/purple_balloons_birt_fa4c847a.jpg";
 
 export default function Hero() {
-  useEffect(() => {
-    const duration = 3000;
-    const animationEnd = Date.now() + duration;
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+  const [buttonClicked, setButtonClicked] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
+  
+  const buttonTexts = ["❤️ Scroll down ❤️", "buffff...", "semmaaa po nee", "hmm hmm"];
 
-    const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
+  const handleButtonClick = () => {
+    if (!buttonClicked) {
+      setButtonClicked(true);
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.7 },
+        colors: ['#9b5de5', '#f15bb5', '#fee440']
+      });
+    }
+    
+    const newCount = (clickCount + 1) % buttonTexts.length;
+    setClickCount(newCount);
+    
+    if (newCount === 0) {
+      document.getElementById('memory-section')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-    const interval = window.setInterval(() => {
-      const timeLeft = animationEnd - Date.now();
-
-      if (timeLeft <= 0) {
-        return clearInterval(interval);
+  const letterVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.05,
+        duration: 0.5
       }
+    })
+  };
 
-      const particleCount = 50 * (timeLeft / duration);
-      confetti({
-        ...defaults,
-        particleCount,
-        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-        colors: ['#9b5de5', '#f15bb5', '#fee440']
-      });
-      confetti({
-        ...defaults,
-        particleCount,
-        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-        colors: ['#9b5de5', '#f15bb5', '#fee440']
-      });
-    }, 250);
-
-    return () => clearInterval(interval);
-  }, []);
+  const titleText = "Happy Birthday";
+  const nameText = "Sakthi!";
 
   return (
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
@@ -58,26 +65,63 @@ export default function Hero() {
             It's your special day
           </span>
           
-          <h1 className="text-5xl md:text-7xl lg:text-9xl font-script text-white mb-6 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">
-            Happy Birthday <br/>
-            <span className="text-purple-300">Sakthi!</span>
-          </h1>
+          <div className="text-5xl md:text-7xl lg:text-8xl font-script text-white mb-4 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">
+            <div className="flex flex-wrap justify-center gap-2">
+              {titleText.split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  custom={i}
+                  variants={letterVariants}
+                  initial="initial"
+                  animate="animate"
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+            <div className="flex flex-wrap justify-center gap-2 mt-2">
+              {nameText.split("").map((char, i) => (
+                <motion.span
+                  key={`name-${i}`}
+                  custom={titleText.length + i}
+                  variants={letterVariants}
+                  initial="initial"
+                  animate="animate"
+                  className="text-purple-300"
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+          </div>
           
-          <p className="max-w-xl mx-auto text-lg md:text-xl text-purple-100 font-sans leading-relaxed">
+          <p className="max-w-xl mx-auto text-lg md:text-xl text-purple-100 font-sans leading-relaxed mt-8">
             To the most amazing person I know. Today is all about you, your smile, and your magic.
           </p>
 
           <motion.div 
-            className="mt-10"
+            className="mt-16"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <button 
-              onClick={() => document.getElementById('gift-section')?.scrollIntoView({ behavior: 'smooth' })}
+            <motion.button 
+              onClick={handleButtonClick}
+              animate={{
+                y: buttonClicked ? 30 : 0,
+              }}
+              transition={{ type: "spring", damping: 10 }}
               className="bg-white text-purple-900 px-8 py-3 rounded-full font-bold shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all flex items-center gap-2 mx-auto"
             >
-              ❤️ Scroll down ❤️
-            </button>
+              <motion.span
+                key={buttonTexts[clickCount]}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.3 }}
+              >
+                {buttonTexts[clickCount]}
+              </motion.span>
+            </motion.button>
           </motion.div>
         </motion.div>
       </div>
