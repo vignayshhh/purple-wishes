@@ -11,7 +11,7 @@ export default function MemoryLane() {
   return (
     <section id="memory-section" className="py-20 px-4 bg-gradient-to-t from-background to-purple-950/30">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-5xl md:text-6xl lg:text-7xl font-script text-white mb-6 drop-shadow-lg">
+        <h2 className="text-5xl md:text-6xl lg:text-7xl font-script text-white mb-6 drop-shadow-lg" style={{animation: "glow 3s ease-in-out infinite", textShadow: "0 0 20px rgba(168,85,247,0.6)"}}>
           How it all Started
           <div className="w-24 h-1 bg-purple-500 mx-auto mt-6 rounded-full shadow-[0_0_10px_#a855f7]"></div>
         </h2>

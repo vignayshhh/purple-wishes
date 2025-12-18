@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import giftBoxImg from "@assets/22.55_1766068110878.jpg";
-import earplugsImg from "@assets/stock_images/purple_earplugs_loop_6018d47c.jpg";
+import giftBoxImg from "@assets/Screenshot_2025-12-18_200800_1766068732159.jpg";
+import earplugsImg from "@assets/Screenshot_2025-12-18_200830_1766068732158.jpg";
 import confetti from "canvas-confetti";
 
 export default function GiftSection() {
@@ -22,7 +22,7 @@ export default function GiftSection() {
   return (
     <section id="gift-section" className="py-20 px-4 bg-gradient-to-b from-background to-purple-950/50">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-5xl md:text-6xl lg:text-7xl font-script text-white mb-12 drop-shadow-lg">
+        <h2 className="text-5xl md:text-6xl lg:text-7xl font-script text-white mb-12 drop-shadow-lg" style={{animation: "glow 3s ease-in-out infinite", textShadow: "0 0 20px rgba(168,85,247,0.6)"}}>
           Summa Virtual Gift
           <div className="w-24 h-1 bg-purple-500 mx-auto mt-6 rounded-full shadow-[0_0_10px_#a855f7]"></div>
         </h2>
