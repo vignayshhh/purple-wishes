@@ -9,15 +9,29 @@ const images = [img1, img2, img3, img4];
 
 export default function MemoryLane() {
   return (
-    <section id="memory-section" className="py-20 px-4 bg-gradient-to-t from-background to-purple-950/30">
+    <section
+      id="memory-section"
+      className="py-20 px-4 bg-gradient-to-t from-background to-purple-950/30"
+    >
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-5xl md:text-6xl lg:text-7xl font-script text-white mb-6 drop-shadow-lg" style={{animation: "glow 3s ease-in-out infinite", textShadow: "0 0 20px rgba(168,85,247,0.6)"}}>
+        <h2
+          className="text-5xl md:text-6xl lg:text-7xl font-script text-white mb-6 drop-shadow-lg"
+          style={{
+            animation: "glow 3s ease-in-out infinite",
+            textShadow: "0 0 20px rgba(168,85,247,0.6)",
+          }}
+        >
           How it all Started
           <div className="w-24 h-1 bg-purple-500 mx-auto mt-6 rounded-full shadow-[0_0_10px_#a855f7]"></div>
         </h2>
-        <p className="text-lg md:text-xl text-purple-200 font-sans mt-8 mb-16">
-          I had these images saved for this special birthday!
-        </p>
+        <div className="space-y-6 max-w-3xl mx-auto mt-10 mb-16">
+          <p className="text-xl md:text-2xl text-purple-100 font-sans leading-relaxed">
+            I had these images saved for this special birthday!
+          </p>
+          <p className="text-xl md:text-2xl text-purple-100 font-sans leading-relaxed italic">
+            You were always unexplainably Special to me from the very beginning
+          </p>
+        </div>
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto items-center">
           {/* Center Infinity Symbol */}
@@ -31,10 +45,12 @@ export default function MemoryLane() {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.2 }}
-              className={`relative group ${index % 2 !== 0 ? 'md:mt-12' : 'md:mb-12'}`}
+              className={`relative group ${
+                index % 2 !== 0 ? "md:mt-12" : "md:mb-12"
+              }`}
             >
               <div className="relative aspect-auto rounded-2xl overflow-hidden border-4 border-purple-500/30 shadow-2xl hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] transition-all duration-500 rotate-1 group-hover:rotate-0">
-                <img 
+                <img
                   src={image}
                   alt={`Memory ${index + 1}`}
                   className="w-full h-full object-contain bg-gradient-to-br from-purple-800 to-indigo-900"
@@ -43,6 +59,33 @@ export default function MemoryLane() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* New Section: Idhu Dialogue illa maa Fact uh */}
+        <div className="mt-24 text-center">
+          <h2
+            className="text-5xl md:text-6xl lg:text-7xl font-script text-white mb-12 drop-shadow-lg"
+            style={{
+              animation: "glow 3s ease-in-out infinite",
+              textShadow: "0 0 20px rgba(168,85,247,0.6)",
+            }}
+          >
+            Idhu Dialogue illa maa Fact uh
+            <div className="w-24 h-1 bg-purple-500 mx-auto mt-6 rounded-full shadow-[0_0_10px_#a855f7]"></div>
+          </h2>
+
+          <div className="max-w-4xl mx-auto mt-12 rounded-2xl overflow-hidden shadow-2xl border-2 border-purple-500/30">
+            {/* Replace the src with your image path after uploading */}
+            <img
+              src="/fact-image.jpeg"
+              alt="Special Memory Fact"
+              className="w-full h-auto object-cover"
+            />
+            <p className="text-lg md:text-xl text-purple-100 font-sans mt-6 px-4 pb-6 italic">
+              Every single line, reel, dialogue or whatever I send or say is
+              sent genuinely from the dhill nga.. Nambungaaa haha!
+            </p>
+          </div>
         </div>
       </div>
     </section>
